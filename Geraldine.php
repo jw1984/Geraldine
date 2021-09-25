@@ -9,7 +9,7 @@
         <script src='jquery-2.1.3.min.js'></script>
 
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="myCSS.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<style>
 	html {  }
