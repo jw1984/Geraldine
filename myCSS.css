@@ -1,4 +1,4 @@
-.bar {
+.volumebar {
     --volume: 0%;
     position: relative;
     width: 100%;
@@ -7,7 +7,7 @@
     margin-bottom: 20px;
 }
 
-.bar::before {
+.volumebar::before {
     content: '';
     position: absolute;
     top: 0;
@@ -20,7 +20,7 @@
 }
 
 
-.techkib-online-tool-button {
+.mybutton {
     background-color: red;
     border: none;
     border-radius: 5px;

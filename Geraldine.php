@@ -183,7 +183,7 @@ Geraldine Geraldine Geraldine Geraldine Geraldine Geraldine
 
 
     <div class="components">
-        <button class="techkib-online-tool-button" id="start">
+        <button class="mybutton" id="start">
             <i class="fa "></i> Alive
         </button>
         <button  id="startosc" onClick="pStartOsc()">
@@ -193,7 +193,7 @@ Geraldine Geraldine Geraldine Geraldine Geraldine Geraldine
             <i >Stop Oscillator</i> 
         </button>
     </div>
-<div class="bar" id="volume-visualizer"></div>
+<div class="volumebar" id="volume-visualizer"></div>
 
 
 
