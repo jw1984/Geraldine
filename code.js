@@ -535,17 +535,7 @@ if (largestoredfrequenciesindice > 500) {
         };
     }
     catch (e) {
-        console.error('Failed to initialize volume visualizer, simulating instead...', e);
-        let lastVolume = 50;
-        myVolumeCallback = () => {
-            const volume = Math.min(Math.max(Math.random() * 100, 0.8 * lastVolume), 1.2 * lastVolume);
-            lastVolume = volume;
-            volumeVisualizer.style.setProperty('--volume', volume + '%');
-	    Jaw.style.setProperty('--move', volume  +"px");
-            var taxi;
-            taxi = document.getElementById("tex");
-            taxi.innerHTML = "Status: Microphone is not working! ❌";
-        };
+        console.error('Can\'t initialize microphone sound or volume meter', e);
     }
     startButton.addEventListener('click', () => {
         if (myVolumeCallback !== null && myVolumeInterval === null)
