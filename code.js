@@ -531,7 +531,7 @@ if (largestoredfrequenciesindice > 500) {
 
             var taxi;
             taxi = document.getElementById("tex");
-            taxi.innerHTML = "Your Microphone is Working! 😇";
+            taxi.innerHTML = "The microphone works";
         };
     }
     catch (e) {
