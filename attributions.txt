@@ -80,6 +80,14 @@ https://developers.google.com/web/fundamentals/media/recording-audio
 
 
 
+https://www.w3schools.com/php/php_mysql_intro.asp
+
+
+
+
+
+
+
 Copyright (c) 2021 by Jess Wyer (https://codepen.io/alkjweoj/pen/oNwBxyG)
 Fork of an original work Boombox: Audio Basics (https://codepen.io/Rumyra/pen/qyMzqN
 
