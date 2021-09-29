@@ -70,7 +70,7 @@ var audioContext = new AudioContext();
 
 var context = new (window.AudioContext || window.webkitAudioContext)();
 var oscillator = context.createOscillator(); // instantiate an oscillator
-oscillator.type = 'sine'; // this is the default - also square, sawtooth, triangle
+oscillator.type = 'square'; // this is the default - also square, sawtooth, triangle
 oscillator.frequency.value = 100; // Hz
 oscillator.connect(context.destination); // connect it to the destination
 oscillator.start(); // start the oscillator
@@ -86,7 +86,7 @@ oscillator.start(); // start the oscillator
 //i want a second oscilator
 var context2 = new (window.AudioContext || window.webkitAudioContext)();
 var oscillator2 = context2.createOscillator(); // instantiate an oscillator
-oscillator2.type = 'sine'; // this is the default - also square, sawtooth, triangle
+oscillator2.type = 'square'; // this is the default - also square, sawtooth, triangle
 oscillator2.frequency.value = 200; // Hz
 oscillator2.connect(context2.destination); // connect it to the destination
 oscillator2.start(); // start the oscillator
@@ -122,6 +122,13 @@ oscillator2.stop(); // stop the oscillator
 
 
 
+
+
+
+
+
+
+
 function playchosenramblingfunction(  ) {
 //get the text from the text box
 var textboxtext = document.getElementById("texxxtramblings").value ;
@@ -136,7 +143,7 @@ var lengthindice = textboxtext.length;
 //i want a second oscilator
 var context3 = new (window.AudioContext || window.webkitAudioContext)();
 var osc3 = context3.createOscillator(); // instantiate an oscillator
-osc3.type = 'sine'; // this is the default - also square, sawtooth, triangle
+osc3.type = 'square'; // this is the default - also square, sawtooth, triangle
 osc3.frequency.value = 100; // Hz
 osc3.connect(context3.destination); // connect it to the destination
 osc3.start(); // start the oscillator
@@ -153,6 +160,35 @@ var pastmilliseconds = 0;
 
 //if greter than the first frame
 var waveframe = 0;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -486,26 +522,33 @@ if (largestoredfrequenciesindice > 500) {
 
 
 
-	fixjaw = fixjaw + 220 + 47.5;
-	if (fixjaw < (210 + 57.5) ) {
-		fixjaw = 220 + 47.5;
+	fixjaw = fixjaw + 200 + 47.5;
+	if (fixjaw < (200 + 47.5) ) {
+		fixjaw = 200 + 47.5;
 	}
 	//Jaw.style.top = ( fixjaw ) +"px"; //(volumeSum/25)+85  +"px";
-	Jaw.style.setProperty('--move', ( fixjaw ) +"px");
-	//Jaw.style.setProperty('--move', ( volumeSum ) +"px");
+	//Jaw.style.setProperty('--move', ( fixjaw ) +"px");
+	////Jaw.style.setProperty('--move', ( volumeSum ) +"px");
 
 
 
-
+	Jaw.style.setProperty('--move', ( 215+(volumeSum /150) ) +"px");
 
 
 //voice data oscillator
-	oscillator2.frequency.value = frequencyleap ; // Hz
+	//oscillator2.frequency.value = frequencyleap ; // Hz
                     lestmagnitude = volumeSum ;
 
-//wind sounding oscillator
-	oscillator.frequency.value = volumeSum - 12300; // Hz
+var divisor = volumeSum - 11000; // Hz
 
+oscillator2.frequency.value =  divisor - 200; // Hz
+
+
+//wind sounding oscillator
+	oscillator.frequency.value = divisor - 200; // Hz
+
+
+osc3.frequency.value = divisor - 200 ; // Hz
 
 
 

@@ -41,7 +41,7 @@
 
 /* Modal Content/Box */
 .robot-content {
-	background-image: url("doll-2554683_1920.png");
+	background-image: url("robot-4747133_1920.jpg");
     position: absolute;
     top: 0px;
     left: 0px;
@@ -57,13 +57,15 @@
 /* Modal Content/Box */
 .robot-jaw2 {
     --move: 267.5px;
-    background-image: url("Jaw.png");
+    background-image: url("Jawpinkandroid.png");
     position: absolute;
     top: var(--move);
-    left: 310px;
+    left: 230px;
+
+
 
 	width: 80px;
-	height: 20px;
+	height: 42px;
 }
 
 
@@ -167,7 +169,7 @@ Geraldine Geraldine Geraldine Geraldine Geraldine Geraldine
 </div>
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <div id="myDiv" style="background-color:hotpink; ">
-<center><h1>Satanic, Talking, Undead, New Race of Immortal Robot Toys that Take Over the World</h1></center>
+<center><h1>Talking, Undead, Race of Immortal Robot Toys that Take Over the World</h1></center>
 
 
 
