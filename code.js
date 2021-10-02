@@ -19,6 +19,7 @@
 
 
 
+window.AudioContext = window.AudioContext || window.webkitAudioContext;
 
 
 
@@ -32,6 +33,42 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+////create a basic vocoder
+//var context5 = new (window.AudioContext || window.webkitAudioContext)();
+
+//var osc5 = context5.createOscillator();
+//osc5.frequency.value = 440;
+//osc5.connect(context5.destination);
+////osc5.start(0);
+
+//const gainNode = context5.createGain();
+//// connect oscillator to gain node to speakers
+//osc5.connect(gainNode);
+//gainNode.connect(context5.destination);
+//gainNode.gain.value = 0;
+
+//const music = new Audio('girlAh.wav');
+//music.play();
+//music.loop =true;
+//music.volume = 100;
+
+//calculate between the highs and the lows
+var high = 0;
+var low = 1000;
+
+var resetcount = 0;
+var lastvolume = 0;//see if volume is climbing
 
 
 
@@ -59,7 +96,7 @@ function writeText (form) {
 
 
 
-window.AudioContext = window.AudioContext || window.webkitAudioContext;
+
 
 //wind sounding oscillator
 var audioContext = new AudioContext();
@@ -70,7 +107,7 @@ var audioContext = new AudioContext();
 
 var context = new (window.AudioContext || window.webkitAudioContext)();
 var oscillator = context.createOscillator(); // instantiate an oscillator
-oscillator.type = 'square'; // this is the default - also square, sawtooth, triangle
+oscillator.type = 'sine'; // this is the default - also square, sawtooth, triangle
 oscillator.frequency.value = 100; // Hz
 oscillator.connect(context.destination); // connect it to the destination
 oscillator.start(); // start the oscillator
@@ -86,10 +123,51 @@ oscillator.start(); // start the oscillator
 //i want a second oscilator
 var context2 = new (window.AudioContext || window.webkitAudioContext)();
 var oscillator2 = context2.createOscillator(); // instantiate an oscillator
-oscillator2.type = 'square'; // this is the default - also square, sawtooth, triangle
+oscillator2.type = 'sine'; // this is the default - also square, sawtooth, triangle
 oscillator2.frequency.value = 200; // Hz
 oscillator2.connect(context2.destination); // connect it to the destination
-oscillator2.start(); // start the oscillator
+//oscillator2.start(); // start the oscillator
+
+
+
+
+
+
+
+
+
+
+
+
+//i want a thousand oscilator
+var context8 = [];
+var oscillator8 = [];
+
+for (var i = 0; i < 20; i++) {
+context8[i] = new (window.AudioContext || window.webkitAudioContext)();
+oscillator8[i] = context8[i].createOscillator(); // instantiate an oscillator
+oscillator8[i].type = 'sine'; // this is the default - also square, sawtooth, triangle
+oscillator8[i].frequency.value = 200; // Hz
+oscillator8[i].connect(context8[i].destination); // connect it to the destination
+oscillator8[i].start(); // start the oscillator
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -107,6 +185,91 @@ function pStopOsc() {
 oscillator.stop(); // stop the oscillator
 oscillator2.stop(); // stop the oscillator
 }
+
+
+
+
+
+
+
+
+
+var frequencyvariant = 300;
+//increase decrease frequency
+
+//increase gain
+function pChangeGain() {
+//create gain nodes
+//gainNode.gain.value += .01;
+frequencyvariant += 10;
+}
+
+//decrease gain
+function pChangeGain2() {
+//create gain nodes
+//gainNode.gain.value -= .01;
+frequencyvariant -= 10;
+}
+
+
+
+
+
+
+
+
+
+
+
+var jawvariant = 0;
+//increase decrease frequency
+
+//increase gain
+function pChangeGain1() {
+//create gain nodes
+//gainNode.gain.value += .01;
+jawvariant  += 1;
+}
+
+//decrease gain
+function pChangeGain21() {
+//create gain nodes
+//gainNode.gain.value -= .01;
+jawvariant  -= 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -532,23 +695,142 @@ if (largestoredfrequenciesindice > 500) {
 
 
 
-	Jaw.style.setProperty('--move', ( 215+(volumeSum /150) ) +"px");
+	Jaw.style.setProperty('--move', ( 155+jawvariant+(volumeSum /110) ) +"px");
+	Jaw.style.setProperty('--colorOpacity',  ((volumeSum /75)*3) );
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ctx2.fillText(      volumeSum,            50,25);
+
+
+//volumeSum = volumeSum * .05;
+
+//var high = 0;
+//var low = 0;
+
+
+
+//resetcount += 1;
+//if (resetcount > 100) {
+//high = 0;
+//low = 1000;
+//resetcount = 0;
+//}
+
+
+
+
+
+if(volumeSum*.0001 > high ) {
+	high = volumeSum*.0001;
+}
+if(volumeSum*.0001 < low ) {
+	low = volumeSum*.0001;
+}
+var difference = high - low;
+var vary = 1 / difference ;
+var varyvolume = ((volumeSum*.0001) - difference ) * vary;
+
+
+
+//if(volumeSum*.001 > high ) {
+//	high = volumeSum*.1;
+//}
+//if(volumeSum*.001 < low ) {
+//	low = volumeSum*.1;
+//}
+//var difference = high - low;
+//var vary = 1 / difference ;
+//var varyvolume = ((volumeSum*.001) - difference ) * vary;
+
+ctx2.fillText(      varyvolume       ,50,50);
 
 //voice data oscillator
 	//oscillator2.frequency.value = frequencyleap ; // Hz
                     lestmagnitude = volumeSum ;
 
 var divisor = volumeSum - 11000; // Hz
+//var divisor = volumeSum - 110; // Hz
 
-oscillator2.frequency.value =  divisor - 200; // Hz
+//oscillator2.frequency.value =  divisor - 0; // Hz
 
 
 //wind sounding oscillator
-	oscillator.frequency.value = divisor - 200; // Hz
+	oscillator.frequency.value = divisor - 50; // Hz
 
 
-osc3.frequency.value = divisor - 200 ; // Hz
+//osc3.frequency.value = divisor - 200 -200; // Hz
+
+
+for (var i = 2; i < 20; i++) {
+oscillator8[i-2].frequency.value = divisor - 50 -((i+5)*frequencyvariant); // Hz
+}
+
+
+
+
+
+
+
+
+
+
+
+lastvolume = varyvolume ;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -57,9 +57,11 @@
 /* Modal Content/Box */
 .robot-jaw2 {
     --move: 267.5px;
+    --colorOpacity: 1;
     background-image: url("Jawpinkandroid.png");
     position: absolute;
     top: var(--move);
+    /* background-color: rgb(var(--colorOpacity), var(--colorOpacity), var(--colorOpacity)); */
     left: 230px;
 
 
@@ -167,7 +169,7 @@ Geraldine Geraldine Geraldine Geraldine Geraldine Geraldine
 <div id="myDiv" style="background-color:pink; ">
 
 </div>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <div id="myDiv" style="background-color:hotpink; ">
 <center><h1>Talking, Undead, Race of Immortal Robot Toys that Take Over the World</h1></center>
 
@@ -177,11 +179,39 @@ Geraldine Geraldine Geraldine Geraldine Geraldine Geraldine
 
 
 
+
+
+
 </div>
 
 
 </div>
 </div>
+
+
+
+        <button  id="mybChangeFrequencyUp" onClick="pChangeGain()">
+             Increase Frequency
+        </button>
+
+        <button  id="mybChangeGainFrequencyDown" onClick="pChangeGain2()">
+             Decrease Frequency
+        </button>
+
+<br>
+
+
+        <button  id="mybChangeJawUp" onClick="pChangeGain1()">
+             Increase Jaw
+        </button>
+
+        <button  id="mybChangeGainJawDown" onClick="pChangeGain21()">
+             Decrease Jaw
+        </button>
+
+
+
+
 
 
     <div class="components">
